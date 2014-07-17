@@ -7,11 +7,11 @@
 	</properties>
 
 	<!-- general project information -->
-	<groupId>de.hshannover.f4.trust.visitmeta.device</groupId>
-	<artifactId>leapmotion</artifactId>
+	<groupId>de.hshannover.f4.trust</groupId>
+	<artifactId>visitmeta-device-leapmotion</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
-	<name>leapmotion</name>
+	<name>visitmeta-device-leapmotion</name>
 	<url>http://trust.f4.hs-hannover.de/</url>
 	<description>
 	Project that adds support for the LeapMotion device to the VisITMeta GUI.
