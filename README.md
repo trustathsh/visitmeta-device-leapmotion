@@ -28,33 +28,50 @@ operating system.
 Furthermore, you need to download the [LeapMotion SDK v1][13] suitable to your
 platform and operating system.
 
-Extract the SDK archive into a folder of your choice, then take a look at the
-`src/main/templates/native-libs/` folder inside this project.
+Extract the SDK archive into a folder of your choice.
 
-There should be three empty folders named `linux`, `osx` and `windows`
-Choose the one according to your operating system and create a subdirectory for your
-systems architecture (x64 or x86).
+Copying files form the SDK
+--------------------------
 
-Example: if you are on a 64bit Linux system, the folder
-`src/main/templates/native-libs/linux/x64/` should exist.
+Go to the `src/main/templates/native-libs/` folder inside this project (where
+this README lies).
+
+There should exist three folders named `linux`, `osx` and `windows`.
+Switch to the one suitable for your operating system and choose the subdirectory for your
+system architecture (`x64` or `x86`).
+
+*Example:*
+If you are on a 64bit Linux system, the folder
+`src/main/templates/native-libs/linux/x64/` would be the correct one.
 
 Now, go to the the LeapMotion SDK folder you extracted earlier and go to
 `LeapDeveloperKit/LeapSDK/lib`.
+
 Depending on your system, you have to copy the following files:
-* Linux
-  * `libLeap.so` and `libLeapJava.so` from the `x64` or `x86` folder to `native-libs/x64`
-  or `native-libs/x86`
-  * `LeapJava.jar` to `native-libs/`
-* Windows
-  * the `x64` or `x86` folder to `native-libs/`
-  * `LeapJava.jar` to `native-libs/` 
-* Mac OSX
-  * `libLeap.dylib` and `libLeapJava.dylib` to `native-libs/x64`
-  * `LeapJava.jar` to `native-libs/`
+
+**Linux**
+
+*	`libLeap.so` and `libLeapJava.so` from the `x64` or `x86` folder to
+	`native-libs/linux/x64` or `native-libs/linux/x86`
+*	`LeapJava.jar` to `native-libs/`
+
+**Windows**
+
+* the `x64` or `x86` folder to `native-libs/windows/`
+* `LeapJava.jar` to `native-libs/` 
+
+**Mac OSX**
+
+* `libLeap.dylib` and `libLeapJava.dylib` to `native-libs/osx/x64`
+* `LeapJava.jar` to `native-libs/`
+
+Installing LeapMotion for Java into local Maven repository
+----------------------------------------------------------
 
 Afterwards you have to edit the script file for your system under 
 `src/main/templates/installation` to reflect the correct filename and version of the
 loaded SDK version.
+	
 	#!/bin/bash
 	mvn org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file \
 		-Dfile=../native-libs/LeapJava.jar \
@@ -63,6 +80,7 @@ loaded SDK version.
 
 Furthermore the `pom.xml` in the projects root directory has to be adapted to that version
 number in the section
+	
 	<dependency>
 		<groupId>com.leapmotion.leap</groupId>
 		<artifactId>leapmotion</artifactId>
@@ -79,7 +97,7 @@ in the root directory of the LeapMotion for VisITMeta project (the directory
 containing this `README` file). Maven should download all further
 needed dependencies for you.
 After a successful build you should find a zip-archive called
-`visitmeta-leapmotion-<version>-bundle.zip` in 
+`visitmeta-device-leapmotion-<version>-bundle.zip` in 
 `target`.
 
 Copy this archive to the `devices` subfolder of your already build VisITMeta folder and

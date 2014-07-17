@@ -1,0 +1,1 @@
+Copy Linux specific 64bit LeapMotion library files in here
