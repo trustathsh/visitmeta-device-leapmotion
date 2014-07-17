@@ -1,0 +1,4 @@
+VisITMeta input device: LeapMotion - Release 0.0.1 - 17.04.14
+
+* First prototype version
+  - LeapMotion support for VisITMeta GUI

@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<inceptionYear>2014</inceptionYear>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- general project information -->
+	<groupId>de.hshannover.f4.trust.visitmeta.device</groupId>
+	<artifactId>leapmotion</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+	<name>leapmotion</name>
+	<url>http://trust.f4.hs-hannover.de/</url>
+	<description>
+	Project that adds support for the LeapMotion device to the VisITMeta GUI.
+	</description>
+	<organization>
+		<name>Trust@HsH</name>
+		<url>http://trust.f4.hs-hannover.de/</url>
+	</organization>
+
+	<!-- the project license -->
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>manual</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<!-- the core developers of the project -->
+	<developers>
+		<developer>
+			<name>Trust@HsH</name>
+			<email>trust@f4-i.fh-hannover.de</email>
+		</developer>
+        </developers>
+	
+	<contributors>
+    	<contributor>
+			<name>Bastian Hellmann</name>
+		</contributor>
+		<contributor>
+			<name>Oleg Wetzler</name>
+		</contributor>
+		<contributor>
+			<name>Ralf Steuerwald</name>
+		</contributor>
+	</contributors>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2.2</version>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Class-Path>. ./lib/ ./config/</Class-Path>
+						</manifestEntries>
+					</archive>
+					<descriptors>
+						<descriptor>src/main/assembly/bin.xml</descriptor>
+						<descriptor>src/main/assembly/src.xml</descriptor>
+						<descriptor>src/main/assembly/bundle.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>1.4</version>
+				<configuration>
+					<licenseName>apache_v2</licenseName>
+					<canUpdateDescription>true</canUpdateDescription>
+					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+					<descriptionTemplate>${basedir}/src/license/description_template.ftl</descriptionTemplate>
+					<roots>
+						<root>src/main/java</root>
+					</roots>
+				</configuration>
+			</plugin>
+		</plugins>
+		
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<filtering>true</filtering>
+				<targetPath>../filtered-source/java</targetPath>
+			</resource>
+		</resources>
+
+		<sourceDirectory>target/filtered-source/java</sourceDirectory>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.hshannover.f4.trust.visitmeta</groupId>
+			<artifactId>visualization</artifactId>
+			<version>0.1.0</version> 
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>1.13</version>
+		</dependency>
+		<dependency>
+			<groupId>com.leapmotion.leap</groupId>
+			<artifactId>leapmotion</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+	</dependencies>
+</project>

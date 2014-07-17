@@ -1,0 +1,1 @@
+copy Linux specific LeapMotion library files in here

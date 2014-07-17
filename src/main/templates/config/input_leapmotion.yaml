@@ -1,0 +1,7 @@
+enable: true
+joystick: true
+zmid: 200.0
+zdead: 20.0
+xydead: 20.0
+zrecorded: 150.0
+xyrecorded: 150.0
